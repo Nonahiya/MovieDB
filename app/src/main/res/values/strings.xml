@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MovieDB</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_hit">Hit API</string>
+    <string name="img">img</string>
+    <string name="title">title</string>
+    <string name="subtitle">subtitle</string>
+    <string name="releasedate">release date</string>
+</resources>
