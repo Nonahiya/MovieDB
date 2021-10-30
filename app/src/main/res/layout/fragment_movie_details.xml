@@ -47,7 +47,7 @@
                     android:layout_width="0dp"
                     android:layout_height="225dp"
                     android:layout_marginTop="8dp"
-                    android:src="@android:drawable/ic_menu_gallery"
+                    android:src="@drawable/ic_baseline_broken_image_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lbl_tagline_moviedetails_fragment" />
@@ -60,7 +60,7 @@
                     android:layout_marginTop="-58dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_banner_moviedetails_fragment"
-                    app:srcCompat="@android:drawable/ic_menu_gallery" />
+                    app:srcCompat="@drawable/ic_baseline_broken_image_24" />
 
                 <TextView
                     android:id="@+id/lbl_title_moviedetails_fragment"

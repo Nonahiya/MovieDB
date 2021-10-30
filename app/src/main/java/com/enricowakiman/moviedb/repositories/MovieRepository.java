@@ -43,10 +43,10 @@ public class MovieRepository {
         return result;
     }
 
-    public MutableLiveData<NowPlaying> getNowPlayingData(){
+    public MutableLiveData<NowPlaying> getNowPlayingData(int page){
         final MutableLiveData<NowPlaying> result = new MutableLiveData<>();
 
-        ApiService.endpoint().getNowPlaying(Const.API_KEY).enqueue(new Callback<NowPlaying>() {
+        ApiService.endpoint().getNowPlaying(Const.API_KEY, page).enqueue(new Callback<NowPlaying>() {
             @Override
             public void onResponse(Call<NowPlaying> call, Response<NowPlaying> response) {
                 result.setValue(response.body());
@@ -61,10 +61,10 @@ public class MovieRepository {
         return result;
     }
 
-    public MutableLiveData<Upcoming> getUpcomingData(){
+    public MutableLiveData<Upcoming> getUpcomingData(int page){
         final MutableLiveData<Upcoming> result = new MutableLiveData<>();
 
-        ApiService.endpoint().getUpcoming(Const.API_KEY).enqueue(new Callback<Upcoming>() {
+        ApiService.endpoint().getUpcoming(Const.API_KEY, page).enqueue(new Callback<Upcoming>() {
             @Override
             public void onResponse(Call<Upcoming> call, Response<Upcoming> response) {
                 result.setValue(response.body());

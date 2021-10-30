@@ -19,14 +19,14 @@ public interface ApiEndPoint {
 
     @GET("movie/now_playing")
     Call<NowPlaying> getNowPlaying(
-            @Query("api_key") String apiKey
-//            @Query("page") int pageIndex
+            @Query("api_key") String apiKey,
+            @Query("page") int pageIndex
     );
 
     @GET("movie/upcoming")
     Call<Upcoming> getUpcoming(
-            @Query("api_key") String apiKey
-//            @Query("page") int pageIndex
+            @Query("api_key") String apiKey,
+            @Query("page") int pageIndex
     );
 
     @GET("movie/{movie_id}/credits")

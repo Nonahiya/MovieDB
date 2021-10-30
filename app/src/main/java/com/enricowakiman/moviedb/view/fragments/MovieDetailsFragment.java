@@ -6,12 +6,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -157,13 +159,13 @@ public class MovieDetailsFragment extends Fragment {
                     genre += movies.getGenres().get(i).getName() + ", ";
                 }
             }
-            String[] img_path = {
-                        movies.getPoster_path().toString(),
-                        movies.getBackdrop_path(),
-                    };
-            Glide.with(MovieDetailsFragment.this).load(Const.IMG_URL + img_path[0]).into(img_poster);
-            Glide.with(MovieDetailsFragment.this).load(Const.IMG_URL + img_path[1])
-                    .apply(bitmapTransform(new BlurTransformation(5))).into(img_banner);
+            if (movies.getPoster_path() != null && !movies.getPoster_path().toString().isEmpty()) {
+                Glide.with(MovieDetailsFragment.this).load(Const.IMG_URL + movies.getPoster_path().toString()).into(img_poster);
+            }
+            if (movies.getBackdrop_path() != null && !movies.getBackdrop_path().isEmpty()) {
+                Glide.with(MovieDetailsFragment.this).load(Const.IMG_URL + movies.getBackdrop_path())
+                        .apply(bitmapTransform(new BlurTransformation(5))).into(img_banner);;
+            }
             lbl_title.setText(movies.getTitle());
             lbl_genre.setText(genre);
             lbl_desc.setText(movies.getOverview());

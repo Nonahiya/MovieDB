@@ -29,6 +29,9 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
     public void setListNowPlaying(List<NowPlaying.Results> listNowPlaying){
         this.listNowPlaying = listNowPlaying;
     }
+    public void addListNowPlaying(List<NowPlaying.Results> listNowPlaying){
+        this.listNowPlaying.addAll(listNowPlaying);
+    }
     public NowPlayingAdapter(Context context){
         this.context = context;
     }
@@ -47,7 +50,9 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         holder.lbl_title.setText(results.getTitle());
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(DateFormatting.dateFormat(results.getRelease_date()));
-        Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
+        if (results.getPoster_path() != null && !results.getPoster_path().isEmpty()) {
+            Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
+        }
 //        holder.cv.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -62,7 +67,16 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
     }
 
     @Override
-    public int getItemCount() { return getListNowPlaying().size(); }
+    public int getItemCount() {
+        int itemCount;
+        if (getListNowPlaying() != null && !getListNowPlaying().isEmpty()) {
+            itemCount = getListNowPlaying().size();
+        }
+        else {
+            itemCount = 0;
+        }
+        return itemCount;
+    }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;

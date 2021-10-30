@@ -33,9 +33,7 @@ public class MovieViewModel extends AndroidViewModel {
 
     // ViewModel getNowPlaying
     private MutableLiveData<NowPlaying> resultGetNowPlaying = new MutableLiveData<>();
-    public void getNowPlaying() {
-        resultGetNowPlaying = repository.getNowPlayingData();
-    }
+    public void getNowPlaying(int page) { resultGetNowPlaying = repository.getNowPlayingData(page); }
     public LiveData<NowPlaying> getResultGetNowPlaying(){
         return resultGetNowPlaying;
     }
@@ -43,8 +41,8 @@ public class MovieViewModel extends AndroidViewModel {
 
     // ViewModel getUpcoming
     private MutableLiveData<Upcoming> resultGetUpcoming = new MutableLiveData<>();
-    public void getUpcoming() {
-        resultGetUpcoming = repository.getUpcomingData();
+    public void getUpcoming(int page) {
+        resultGetUpcoming = repository.getUpcomingData(page);
     }
     public LiveData<Upcoming> getResultGetUpcoming(){
         return resultGetUpcoming;

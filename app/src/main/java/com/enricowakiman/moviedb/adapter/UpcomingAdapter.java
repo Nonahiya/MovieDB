@@ -29,6 +29,9 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.CardVi
     public void setListUpcoming(List<Upcoming.Results> listUpcoming){
         this.listUpcoming = listUpcoming;
     }
+    public void addListUpcoming(List<Upcoming.Results> listUpcoming){
+        this.listUpcoming.addAll(listUpcoming);
+    }
     public UpcomingAdapter(Context context){
         this.context = context;
     }
@@ -51,7 +54,16 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.CardVi
     }
 
     @Override
-    public int getItemCount() { return getListUpcoming().size(); }
+    public int getItemCount() {
+        int itemCount;
+        if (getListUpcoming() != null && !getListUpcoming().isEmpty()) {
+            itemCount = getListUpcoming().size();
+        }
+        else {
+            itemCount = 0;
+        }
+        return itemCount;
+    }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
