@@ -1,9 +1,4 @@
-package com.enricowakiman.moviedb.view;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+package com.enricowakiman.moviedb.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +6,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.bumptech.glide.Glide;
 import com.enricowakiman.moviedb.R;
 import com.enricowakiman.moviedb.helper.Const;
 import com.enricowakiman.moviedb.model.Movies;
 import com.enricowakiman.moviedb.viewmodel.MovieViewModel;
-
-import java.lang.reflect.Field;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 

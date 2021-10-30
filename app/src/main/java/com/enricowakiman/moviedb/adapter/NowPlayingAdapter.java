@@ -1,7 +1,7 @@
 package com.enricowakiman.moviedb.adapter;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.enricowakiman.moviedb.R;
 import com.enricowakiman.moviedb.helper.Const;
+import com.enricowakiman.moviedb.helper.DateFormatting;
 import com.enricowakiman.moviedb.model.NowPlaying;
-import com.enricowakiman.moviedb.view.MovieDetailsActivity;
 
 import java.util.List;
 
@@ -39,27 +40,29 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         return new NowPlayingAdapter.CardViewViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final NowPlaying.Results results = getListNowPlaying().get(position);
         holder.lbl_title.setText(results.getTitle());
         holder.lbl_overview.setText(results.getOverview());
-        holder.lbl_release_date.setText(results.getRelease_date());
+        holder.lbl_release_date.setText(DateFormatting.dateFormat(results.getRelease_date()));
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
-        holder.cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
-                intent.putExtra("movie_id", ""+results.getId());
-                context.startActivity(intent);
-            }
-        });
+//        holder.cv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(context, MovieDetailsActivity.class);
+////                intent.putExtra("movie_id", ""+results.getId());
+////                context.startActivity(intent);
+////                Bundle bundle = new Bundle();
+////                bundle.putString("movieId", ""+results.getId());
+////                Navigation.findNavController(v).navigate((R.id.action_nowPlayingFragment_to_movieDetailsFragment), (bundle));
+//            }
+//        });
     }
 
     @Override
-    public int getItemCount() {
-        return getListNowPlaying().size();
-    }
+    public int getItemCount() { return getListNowPlaying().size(); }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
@@ -74,4 +77,6 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
             cv = itemView.findViewById(R.id.cv_card_nowplaying);
         }
     }
+
+
 }

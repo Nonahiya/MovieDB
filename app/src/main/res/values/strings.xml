@@ -6,4 +6,12 @@
     <string name="title">title</string>
     <string name="subtitle">subtitle</string>
     <string name="releasedate">release date</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="up_coming">Upcoming</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="prod_comp">Production Companies</string>
+    <string name="cast">Casts</string>
 </resources>

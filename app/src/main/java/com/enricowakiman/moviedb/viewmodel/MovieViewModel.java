@@ -7,8 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.enricowakiman.moviedb.model.Credits;
 import com.enricowakiman.moviedb.model.Movies;
 import com.enricowakiman.moviedb.model.NowPlaying;
+import com.enricowakiman.moviedb.model.Upcoming;
 import com.enricowakiman.moviedb.repositories.MovieRepository;
 
 public class MovieViewModel extends AndroidViewModel {
@@ -36,6 +38,26 @@ public class MovieViewModel extends AndroidViewModel {
     }
     public LiveData<NowPlaying> getResultGetNowPlaying(){
         return resultGetNowPlaying;
+    }
+    // .
+
+    // ViewModel getUpcoming
+    private MutableLiveData<Upcoming> resultGetUpcoming = new MutableLiveData<>();
+    public void getUpcoming() {
+        resultGetUpcoming = repository.getUpcomingData();
+    }
+    public LiveData<Upcoming> getResultGetUpcoming(){
+        return resultGetUpcoming;
+    }
+    // .
+
+    // ViewModel getCredits
+    private MutableLiveData<Credits> resultGetCreditsById = new MutableLiveData<>();
+    public void getCreditsById(String movieId) {
+        resultGetCreditsById = repository.getCreditsData(movieId);
+    }
+    public LiveData<Credits> getResultGetCreditsById(){
+        return resultGetCreditsById;
     }
     // .
 }

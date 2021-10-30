@@ -1,4 +1,4 @@
-package com.enricowakiman.moviedb.view;
+package com.enricowakiman.moviedb.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.enricowakiman.moviedb.R;
 import com.enricowakiman.moviedb.adapter.NowPlayingAdapter;
+import com.enricowakiman.moviedb.helper.ItemClickSupport;
 import com.enricowakiman.moviedb.model.NowPlaying;
 import com.enricowakiman.moviedb.viewmodel.MovieViewModel;
 

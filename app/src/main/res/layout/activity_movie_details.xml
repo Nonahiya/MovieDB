@@ -5,7 +5,7 @@
     android:id="@+id/cons_moviedetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MovieDetailsActivity">
+    tools:context=".view.activities.MovieDetailsActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_moviedetails"
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="@color/white"
         app:cardElevation="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
+                android:textColor="@color/green"
                 android:textSize="10sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@+id/img_poster_moviedetails"
@@ -45,7 +47,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="@string/title"
                 android:textAlignment="textEnd"
-                android:textColor="@color/Golden"
+                android:textColor="@color/green"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
