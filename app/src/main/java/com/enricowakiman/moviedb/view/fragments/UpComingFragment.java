@@ -19,6 +19,7 @@ import com.enricowakiman.moviedb.R;
 import com.enricowakiman.moviedb.adapter.UpcomingAdapter;
 import com.enricowakiman.moviedb.helper.ItemClickSupport;
 import com.enricowakiman.moviedb.model.Upcoming;
+import com.enricowakiman.moviedb.view.MainMenuActivity;
 import com.enricowakiman.moviedb.viewmodel.MovieViewModel;
 
 /**
@@ -59,6 +60,13 @@ public class UpComingFragment extends Fragment {
         return fragment;
     }
 
+    private RecyclerView rv_upcoming;
+    private MovieViewModel viewModel;
+    private ProgressBar loading, loading_scroller;
+    private UpcomingAdapter adapter;
+    private int page = 1;
+    Boolean isLoading = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,18 +76,15 @@ public class UpComingFragment extends Fragment {
         }
     }
 
-    private RecyclerView rv_upcoming;
-    private MovieViewModel viewModel;
-    private ProgressBar loading, loading_scroller;
-    private UpcomingAdapter adapter;
-    private int page = 1;
-    Boolean isLoading = false;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_up_coming, container, false);
+
+        if (((MainMenuActivity)getActivity()).getPage() != 0) {
+            page = ((MainMenuActivity)getActivity()).getPage();
+        }
 
         loading = view.findViewById(R.id.progressBar_upcoming_fragment);
         loading_scroller = view.findViewById(R.id.loadingBar_upcoming_fragment);
@@ -161,7 +166,7 @@ public class UpComingFragment extends Fragment {
             int currentSize = 20*page;
             int nextSize = currentSize+20;
             while (currentSize < nextSize) {
-                currentSize++;
+                currentSize += 20;
             }
             adapter.notifyDataSetChanged();
         }

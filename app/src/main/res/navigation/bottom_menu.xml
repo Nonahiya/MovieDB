@@ -10,11 +10,11 @@
         android:id="@+id/movieDetailsFragment"
         android:name="com.enricowakiman.moviedb.view.fragments.MovieDetailsFragment"
         android:label="@string/movie_details"
-        tools:layout="@layout/fragment_movie_details" >
+        tools:layout="@layout/fragment_movie_details">
         <argument
             android:name="movieId"
-            app:argType="string"
-            android:defaultValue="null" />
+            android:defaultValue="null"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingFragment"

@@ -19,6 +19,7 @@ import com.enricowakiman.moviedb.R;
 import com.enricowakiman.moviedb.adapter.NowPlayingAdapter;
 import com.enricowakiman.moviedb.helper.ItemClickSupport;
 import com.enricowakiman.moviedb.model.NowPlaying;
+import com.enricowakiman.moviedb.view.MainMenuActivity;
 import com.enricowakiman.moviedb.viewmodel.MovieViewModel;
 
 /**
@@ -63,8 +64,9 @@ public class NowPlayingFragment extends Fragment {
     private MovieViewModel viewModel;
     private ProgressBar loading, loading_scroller;
     private NowPlayingAdapter adapter;
-    private int page = 1;
+    private int page;
     Boolean isLoading = false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,10 @@ public class NowPlayingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
+
+        if (((MainMenuActivity)getActivity()).getPage() != 0) {
+            page = ((MainMenuActivity)getActivity()).getPage();
+        }
 
         loading = view.findViewById(R.id.progressBar_nowplaying_fragment);
         loading_scroller = view.findViewById(R.id.loadingBar_nowplaying_fragment);
@@ -163,7 +169,7 @@ public class NowPlayingFragment extends Fragment {
             int currentSize = 20*page;
             int nextSize = currentSize+20;
             while (currentSize < nextSize) {
-                currentSize++;
+                currentSize += 20;
             }
             adapter.notifyDataSetChanged();
         }

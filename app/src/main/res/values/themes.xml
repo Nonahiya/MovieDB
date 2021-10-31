@@ -14,4 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/green</item>
     </style>
+    <style name="ToolbarWhite" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
 </resources>
